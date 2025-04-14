@@ -51,15 +51,6 @@
         zfs_enable_iscsi is defined and
         zfs_enable_iscsi
 
-- name: debian | un-installing open-iscsi (if not enabled)
-  apt:
-    name:
-      - open-iscsi
-    state: absent
-  when: >
-        zfs_enable_iscsi is defined and
-        not zfs_enable_iscsi
-
 - name: debian | configuring iscsitarget service
   template:
     src: etc/default/iscsitarget.j2
@@ -80,14 +71,6 @@
   when: >
         zfs_enable_nfs is defined and
         zfs_enable_nfs
-
-- name: debian | un-installing NFS (if not enabled)
-  apt:
-    name: nfs-kernel-server
-    state: absent
-  when: >
-        zfs_enable_nfs is defined and
-        not zfs_enable_nfs
 
 - name: debian | configuring NFS Kernel Server
   template:
