@@ -31,7 +31,7 @@
 - name: debian | install zfs
   apt: 
     name:
-      - linux-headers-amd64
+      - proxmox-default-headers
       - zfsutils-linux
       - zfs-dkms
     state: present
